@@ -1,6 +1,6 @@
 {
   "logManagerApp": {
-    "Empresa": {
+    "company": {
       "home": {
         "title": "Empresas",
         "refreshListLabel": "Atualizar lista",

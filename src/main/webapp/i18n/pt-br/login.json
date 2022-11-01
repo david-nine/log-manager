@@ -1,8 +1,9 @@
 {
   "logManagerApp": {
     "login": {
+      "title": "Entrar",
       "home": {
-        "title": "Logins",
+        "title": "Entrar",
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Login",
         "createOrEditLabel": "Criar ou editar Login",
@@ -15,12 +16,29 @@
         "question": "Tem certeza de que deseja excluir Login {{ id }}?"
       },
       "detail": {
-        "title": "Login"
+        "title": "Entrar"
       },
       "id": "ID",
       "email": "Email",
       "passsword": "Passsword",
       "manager": "Manager"
+    }
+  },
+  "login": {
+    "title": "Entrar",
+    "form": {
+      "password": "Senha",
+      "rememberme": "lembre-se de mim",
+      "button": "Entrar",
+      "passwordplaceholder": "Sua senha"
+    },
+    "password": {
+      "forgot": "Esquecia a senha"
+    },
+    "messages": {
+      "error": {
+        "authentication": "Credencias inválidas"
+      }
     }
   }
 }

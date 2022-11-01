@@ -1,6 +1,6 @@
 {
   "logManagerApp": {
-    "Colaborador": {
+    "employee": {
       "home": {
         "title": "Colaboradores",
         "refreshListLabel": "Atualizar lista",

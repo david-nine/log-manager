@@ -7,16 +7,6 @@
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="logManagerApp.formattedLog.home.refreshListLabel">Atualizar lista</span>
       </button>
-
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-formatted-log"
-        [routerLink]="['/formatted-log/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="logManagerApp.formattedLog.home.createLabel"> Criar novo Formatted Log </span>
-      </button>
     </div>
   </h2>
 
@@ -73,9 +63,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let formattedLog of formattedLogs; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/formatted-log', formattedLog.id, 'view']">{{ formattedLog.id }}</a>
-          </td>
           <td>{{ formattedLog.hostname }}</td>
           <td>{{ formattedLog.startDate | formatMediumDate }}</td>
           <td>{{ formattedLog.endDate | formatMediumDate }}</td>
@@ -91,21 +78,6 @@
               >
                 <fa-icon icon="eye"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
-              </button>
-
-              <button
-                type="submit"
-                [routerLink]="['/formatted-log', formattedLog.id, 'edit']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
-              </button>
-
-              <button type="submit" (click)="delete(formattedLog)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
               </button>
             </div>
           </td>
