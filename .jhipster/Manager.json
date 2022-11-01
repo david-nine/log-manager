@@ -1,0 +1,25 @@
+{
+  "applications": "*",
+  "changelogDate": "20221031230528",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "manager",
+  "fields": [
+    {
+      "fieldName": "token",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "userType",
+      "fieldType": "UserType",
+      "fieldValues": "ADMIN,NORMAL"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Manager",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

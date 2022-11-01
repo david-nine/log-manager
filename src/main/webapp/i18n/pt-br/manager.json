@@ -1,0 +1,25 @@
+{
+  "logManagerApp": {
+    "manager": {
+      "home": {
+        "title": "Managers",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Manager",
+        "createOrEditLabel": "Criar ou editar Manager",
+        "notFound": "Nenhum Manager encontrado"
+      },
+      "created": "Um novo Manager foi criado com o identificador {{ param }}",
+      "updated": "Um Manager foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Manager foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Manager {{ id }}?"
+      },
+      "detail": {
+        "title": "Manager"
+      },
+      "id": "ID",
+      "token": "Token",
+      "userType": "User Type"
+    }
+  }
+}

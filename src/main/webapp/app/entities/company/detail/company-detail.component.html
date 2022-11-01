@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="company">
+      <h2 data-cy="companyDetailsHeading"><span jhiTranslate="logManagerApp.company.detail.title">Company</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ company.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="logManagerApp.company.name">Name</span></dt>
+        <dd>
+          <span>{{ company.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="logManagerApp.company.cnpj">Cnpj</span></dt>
+        <dd>
+          <span>{{ company.cnpj }}</span>
+        </dd>
+        <dt><span jhiTranslate="logManagerApp.company.realTime">Real Time</span></dt>
+        <dd>
+          <span>{{ company.realTime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/company', company.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

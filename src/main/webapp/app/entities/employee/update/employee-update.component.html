@@ -1,0 +1,125 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-employee-heading" data-cy="EmployeeCreateUpdateHeading" jhiTranslate="logManagerApp.employee.home.createOrEditLabel">
+        Criar ou editar Employee
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              O campo é obrigatório.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.registration" for="field_registration">Registration</label>
+          <input
+            type="text"
+            class="form-control"
+            name="registration"
+            id="field_registration"
+            data-cy="registration"
+            formControlName="registration"
+          />
+          <div
+            *ngIf="editForm.get('registration')!.invalid && (editForm.get('registration')!.dirty || editForm.get('registration')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('registration')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              O campo é obrigatório.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.hostname" for="field_hostname">Hostname</label>
+          <input type="text" class="form-control" name="hostname" id="field_hostname" data-cy="hostname" formControlName="hostname" />
+          <div *ngIf="editForm.get('hostname')!.invalid && (editForm.get('hostname')!.dirty || editForm.get('hostname')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('hostname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              O campo é obrigatório.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.workloadMinutes" for="field_workloadMinutes"
+            >Workload Minutes</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="workloadMinutes"
+            id="field_workloadMinutes"
+            data-cy="workloadMinutes"
+            formControlName="workloadMinutes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.manager" for="field_manager">Manager</label>
+          <select
+            class="form-control"
+            id="field_manager"
+            data-cy="manager"
+            name="manager"
+            formControlName="manager"
+            [compareWith]="compareManager"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="managerOption" *ngFor="let managerOption of managersSharedCollection">{{ managerOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="logManagerApp.employee.company" for="field_company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="companyOption" *ngFor="let companyOption of companiesSharedCollection">{{ companyOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

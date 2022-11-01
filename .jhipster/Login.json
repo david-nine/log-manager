@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20221031230529",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "login",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "passsword",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "required"],
+      "fieldValidateRulesMinlength": "8"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Login",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "manager",
+      "ownerSide": true,
+      "relationshipName": "manager",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
