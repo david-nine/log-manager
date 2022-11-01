@@ -51,6 +51,11 @@ public class CacheConfiguration {
             createCache(cm, com.spynet.logmanager.domain.User.class.getName());
             createCache(cm, com.spynet.logmanager.domain.Authority.class.getName());
             createCache(cm, com.spynet.logmanager.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.spynet.logmanager.domain.Company.class.getName());
+            createCache(cm, com.spynet.logmanager.domain.Employee.class.getName());
+            createCache(cm, com.spynet.logmanager.domain.FormattedLog.class.getName());
+            createCache(cm, com.spynet.logmanager.domain.Manager.class.getName());
+            createCache(cm, com.spynet.logmanager.domain.Login.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

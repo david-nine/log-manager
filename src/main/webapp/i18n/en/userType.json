@@ -1,0 +1,9 @@
+{
+  "logManagerApp": {
+    "UserType": {
+      "null": "",
+      "ADMIN": "ADMIN",
+      "NORMAL": "NORMAL"
+    }
+  }
+}

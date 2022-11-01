@@ -1,0 +1,45 @@
+entity Company {
+    name String required
+    cnpj String required unique minlength(14) maxlength(14) pattern(/\d+/)
+    realTime Boolean
+}
+
+entity Employee {
+    name String required
+    registration String required
+    hostname String required
+    workloadMinutes Long
+}
+
+entity FormattedLog {
+	hostname String required unique
+	startDate LocalDate required
+	endDate LocalDate required
+	startHour Instant required
+	endHour Instant required
+}
+
+entity Manager {
+    token UUID
+    userType UserType
+}
+
+entity Login {
+    email String required unique
+    passsword String minlength(8) required
+}
+
+enum UserType {
+    ADMIN, NORMAL
+}
+
+relationship OneToOne {
+	Login{manager} to Manager
+}
+
+relationship ManyToOne {
+	Employee{manager} to Manager
+ 	Employee{company} to Company
+}
+
+paginate * with pagination

@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="manager">
+      <h2 data-cy="managerDetailsHeading"><span jhiTranslate="logManagerApp.manager.detail.title">Manager</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ manager.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="logManagerApp.manager.token">Token</span></dt>
+        <dd>
+          <span>{{ manager.token }}</span>
+        </dd>
+        <dt><span jhiTranslate="logManagerApp.manager.userType">User Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'logManagerApp.UserType.' + manager.userType }}">{{ manager.userType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/manager', manager.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

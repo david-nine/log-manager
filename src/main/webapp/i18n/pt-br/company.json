@@ -1,0 +1,26 @@
+{
+  "logManagerApp": {
+    "Empresa": {
+      "home": {
+        "title": "Empresas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar nova Empresa",
+        "createOrEditLabel": "Criar ou editar Empresa",
+        "notFound": "Nenhuma Empresa encontrado"
+      },
+      "created": "Um novo Empresa foi criado com o identificador {{ param }}",
+      "updated": "Um Empresa foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Empresa foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Empresa {{ id }}?"
+      },
+      "detail": {
+        "title": "Empresa"
+      },
+      "id": "ID",
+      "name": "Name",
+      "cnpj": "Cnpj",
+      "realTime": "Em tempo real"
+    }
+  }
+}

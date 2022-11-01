@@ -1,0 +1,134 @@
+<div>
+  <h2 id="page-heading" data-cy="FormattedLogHeading">
+    <span jhiTranslate="logManagerApp.formattedLog.home.title">Formatted Logs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="logManagerApp.formattedLog.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-formatted-log"
+        [routerLink]="['/formatted-log/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="logManagerApp.formattedLog.home.createLabel"> Criar novo Formatted Log </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="formattedLogs?.length === 0">
+    <span jhiTranslate="logManagerApp.formattedLog.home.notFound">Nenhum Formatted Log encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="formattedLogs && formattedLogs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">Código</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hostname">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.hostname">Hostname</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startDate">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="endDate">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.endDate">End Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startHour">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.startHour">Start Hour</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="endHour">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.endHour">End Hour</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formattedLog of formattedLogs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/formatted-log', formattedLog.id, 'view']">{{ formattedLog.id }}</a>
+          </td>
+          <td>{{ formattedLog.hostname }}</td>
+          <td>{{ formattedLog.startDate | formatMediumDate }}</td>
+          <td>{{ formattedLog.endDate | formatMediumDate }}</td>
+          <td>{{ formattedLog.startHour | formatMediumDatetime }}</td>
+          <td>{{ formattedLog.endHour | formatMediumDatetime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/formatted-log', formattedLog.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/formatted-log', formattedLog.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(formattedLog)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="formattedLogs && formattedLogs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

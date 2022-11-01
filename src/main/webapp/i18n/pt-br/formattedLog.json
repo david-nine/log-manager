@@ -1,0 +1,28 @@
+{
+  "logManagerApp": {
+    "formattedLog": {
+      "home": {
+        "title": "Logs formatados",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Log Formatado",
+        "createOrEditLabel": "Criar ou editar Log Formatado",
+        "notFound": "Nenhum Log Formatado encontrado"
+      },
+      "created": "Um novo Log Formatado foi criado com o identificador {{ param }}",
+      "updated": "Um Log Formatado foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Log Formatado foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Log Formatado {{ id }}?"
+      },
+      "detail": {
+        "title": "Log Formatado"
+      },
+      "id": "ID",
+      "hostname": "Nome da máquina",
+      "startDate": "Data Inicial",
+      "endDate": "Data Final",
+      "startHour": "Hora Inicial",
+      "endHour": "Hora Final"
+    }
+  }
+}
