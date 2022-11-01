@@ -10,10 +10,6 @@
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">Código</span></dt>
-        <dd>
-          <span>{{ formattedLog.id }}</span>
-        </dd>
         <dt><span jhiTranslate="logManagerApp.formattedLog.hostname">Hostname</span></dt>
         <dd>
           <span>{{ formattedLog.hostname }}</span>
@@ -38,10 +34,6 @@
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
-      </button>
-
-      <button type="button" [routerLink]="['/formatted-log', formattedLog.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
       </button>
     </div>
   </div>

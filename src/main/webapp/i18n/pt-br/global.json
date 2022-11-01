@@ -7,11 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
-        "company": "Company",
-        "employee": "Employee",
-        "formattedLog": "Formatted Log",
-        "manager": "Manager",
-        "login": "Login",
+        "company": "Empresa",
+        "employee": "Colaborador",
+        "formattedLog": "Logs",
+        "manager": "Gestor",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

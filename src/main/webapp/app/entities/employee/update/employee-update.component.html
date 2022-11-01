@@ -100,7 +100,9 @@
             [compareWith]="compareCompany"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="companyOption" *ngFor="let companyOption of companiesSharedCollection">{{ companyOption.id }}</option>
+            <option [ngValue]="companyOption" *ngFor="let companyOption of companiesSharedCollection">
+              {{ companyOption.id }} - {{ companyOption.name }}
+            </option>
           </select>
         </div>
       </div>
