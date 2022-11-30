@@ -7,9 +7,10 @@ import { UserManagementDetailComponent } from './detail/user-management-detail.c
 import { UserManagementUpdateComponent } from './update/user-management-update.component';
 import { UserManagementDeleteDialogComponent } from './delete/user-management-delete-dialog.component';
 import { userManagementRoute } from './user-management.route';
+import { PasswordStrengthtBarModule } from '../../account/password/password-strength-bar/password-strengtht-bar.module';
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(userManagementRoute)],
+  imports: [SharedModule, RouterModule.forChild(userManagementRoute), PasswordStrengthtBarModule],
   declarations: [
     UserManagementComponent,
     UserManagementDetailComponent,

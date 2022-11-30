@@ -130,6 +130,89 @@
           <option *ngFor="let authority of authorities" [value]="authority">{{ authority }}</option>
         </select>
       </div>
+      <div class="mb-3" *ngIf="editForm.value.id === null">
+        <label class="form-label" for="password" jhiTranslate="global.form.newpassword.label">Nova senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="{{ 'global.form.newpassword.placeholder' | translate }}"
+          formControlName="password"
+          data-cy="firstPassword"
+        />
+
+        <div *ngIf="editForm.get('password')!.invalid && (editForm.get('password')!.dirty || editForm.get('password')!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('password')?.errors?.required"
+            jhiTranslate="global.messages.validate.newpassword.required"
+          >
+            A senha é obrigatória.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('password')?.errors?.minlength"
+            jhiTranslate="global.messages.validate.newpassword.minlength"
+          >
+            A senha deve ter pelo menos 4 caracteres
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('password')?.errors?.maxlength"
+            jhiTranslate="global.messages.validate.newpassword.maxlength"
+          >
+            A senha não pode ter mais de 50 caracteres
+          </small>
+        </div>
+
+        <jhi-password-strength-bar [passwordToCheck]="editForm.get('password')!.value"></jhi-password-strength-bar>
+      </div>
+
+      <div class="mb-3" *ngIf="editForm.value.id === null">
+        <label class="form-label" for="confirmPassword" jhiTranslate="global.form.confirmpassword.label">Confirmação de nova senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="{{ 'global.form.confirmpassword.placeholder' | translate }}"
+          formControlName="confirmPassword"
+          data-cy="secondPassword"
+        />
+
+        <div
+          *ngIf="
+            editForm.get('confirmPassword')!.invalid && (editForm.get('confirmPassword')!.dirty || editForm.get('confirmPassword')!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('confirmPassword')?.errors?.required"
+            jhiTranslate="global.messages.validate.confirmpassword.required"
+          >
+            A confirmação da senha é obrigatória.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('confirmPassword')?.errors?.minlength"
+            jhiTranslate="global.messages.validate.confirmpassword.minlength"
+          >
+            A confirmação da senha deve ter pelo menos 4 caracteres
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('confirmPassword')?.errors?.maxlength"
+            jhiTranslate="global.messages.validate.confirmpassword.maxlength"
+          >
+            A confirmação da senha não pode ter mais de 50 caracteres
+          </small>
+        </div>
+      </div>
       <button type="button" class="btn btn-secondary" (click)="previousState()">
         <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
       </button>

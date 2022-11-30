@@ -41,6 +41,7 @@ public class Employee implements Serializable {
     @ManyToOne
     private Manager manager;
 
+    @NotNull
     @ManyToOne
     private Company company;
 

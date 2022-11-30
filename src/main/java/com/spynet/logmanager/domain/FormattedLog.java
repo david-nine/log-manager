@@ -1,5 +1,6 @@
 package com.spynet.logmanager.domain;
 
+import com.spynet.logmanager.domain.enumeration.StatusType;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -46,6 +47,9 @@ public class FormattedLog implements Serializable {
     private Instant endHour;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+    @NotNull
+    @Column(name = "status", nullable = false)
+    private StatusType status;
 
     public Long getId() {
         return this.id;
@@ -126,6 +130,14 @@ public class FormattedLog implements Serializable {
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusType status) {
+        this.status = status;
+    }
 
     @Override
     public boolean equals(Object o) {

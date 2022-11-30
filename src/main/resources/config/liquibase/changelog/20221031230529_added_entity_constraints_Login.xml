@@ -13,5 +13,6 @@
                                  constraintName="fk_login__manager_id"
                                  referencedColumnNames="id"
                                  referencedTableName="manager"/>
+
     </changeSet>
 </databaseChangeLog>

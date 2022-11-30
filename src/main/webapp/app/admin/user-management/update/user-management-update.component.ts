@@ -21,6 +21,7 @@ export class UserManagementUpdateComponent implements OnInit {
   languages = LANGUAGES;
   authorities: string[] = [];
   isSaving = false;
+  doNotMatch = false;
 
   editForm = new FormGroup({
     id: new FormControl(userTemplate.id),
@@ -42,6 +43,14 @@ export class UserManagementUpdateComponent implements OnInit {
     activated: new FormControl(userTemplate.activated, { nonNullable: true }),
     langKey: new FormControl(userTemplate.langKey, { nonNullable: true }),
     authorities: new FormControl(userTemplate.authorities, { nonNullable: true }),
+    password: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
+    }),
+    confirmPassword: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
+    }),
   });
 
   constructor(private userService: UserManagementService, private route: ActivatedRoute) {}
@@ -63,8 +72,13 @@ export class UserManagementUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
+    this.doNotMatch = false;
     const user = this.editForm.getRawValue();
-    if (user.id !== null) {
+    const { password, confirmPassword } = this.editForm.getRawValue();
+    if (password !== confirmPassword && user.id === null) {
+      this.doNotMatch = true;
+      this.isSaving = false;
+    } else if (user.id !== null) {
       this.userService.update(user).subscribe({
         next: () => this.onSaveSuccess(),
         error: () => this.onSaveError(),
