@@ -7,6 +7,7 @@ export interface IFormattedLog {
   endDate?: dayjs.Dayjs | null;
   startHour?: dayjs.Dayjs | null;
   endHour?: dayjs.Dayjs | null;
+  status?: string | null;
 }
 
 export type NewFormattedLog = Omit<IFormattedLog, 'id'> & { id: null };

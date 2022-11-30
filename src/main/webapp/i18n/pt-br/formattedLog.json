@@ -22,7 +22,8 @@
       "startDate": "Data Inicial",
       "endDate": "Data Final",
       "startHour": "Hora Inicial",
-      "endHour": "Hora Final"
+      "endHour": "Hora Final",
+      "status": "Status"
     }
   }
 }

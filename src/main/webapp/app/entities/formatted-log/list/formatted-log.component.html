@@ -22,12 +22,6 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">Código</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="hostname">
             <div class="d-flex">
               <span jhiTranslate="logManagerApp.formattedLog.hostname">Hostname</span>
@@ -58,6 +52,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -68,6 +68,7 @@
           <td>{{ formattedLog.endDate | formatMediumDate }}</td>
           <td>{{ formattedLog.startHour | formatMediumDatetime }}</td>
           <td>{{ formattedLog.endHour | formatMediumDatetime }}</td>
+          <td>{{ formattedLog.status }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

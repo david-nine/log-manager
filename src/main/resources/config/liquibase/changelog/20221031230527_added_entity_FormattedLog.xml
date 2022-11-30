@@ -15,7 +15,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="hostname" type="varchar(255)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_formatted_log__hostname" />
+                <constraints nullable="false" />
             </column>
             <column name="start_date" type="date">
                 <constraints nullable="false" />
@@ -27,6 +27,9 @@
                 <constraints nullable="false" />
             </column>
             <column name="end_hour" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
