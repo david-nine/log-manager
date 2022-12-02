@@ -5,7 +5,6 @@ import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IFormattedLog } from '../formatted-log.model';
-
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { EntityArrayResponseType, FormattedLogService } from '../service/formatted-log.service';
@@ -71,6 +70,11 @@ export class FormattedLogComponent implements OnInit {
     this.handleNavigation(page, this.predicate, this.ascending);
   }
 
+  getInterval(formattedLog: IFormattedLog): string {
+    // @ts-ignore
+    return this.formatTimeDiff(formattedLog.endHour?.toDate(), formattedLog.startHour?.toDate());
+  }
+
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
     return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
@@ -131,5 +135,17 @@ export class FormattedLogComponent implements OnInit {
     } else {
       return [predicate + ',' + ascendingQueryParam];
     }
+  }
+
+  private formatTimeDiff(date1: Date, date2: Date): string {
+    let hour = Array(3)
+      .fill([3600, date1.getTime() - date2.getTime()])
+      .map((v, i, a) => {
+        a[i + 1] = [a[i][0] / 60, ((v[1] / (v[0] * 1000)) % 1) * (v[0] * 1000)];
+        return `0${Math.floor(v[1] / (v[0] * 1000))}`.slice(-2);
+      })
+      .join(':');
+    //hour = hour.slice(0, hour.lastIndexOf(":"));
+    return hour;
   }
 }

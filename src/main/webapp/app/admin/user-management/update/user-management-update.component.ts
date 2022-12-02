@@ -63,7 +63,10 @@ export class UserManagementUpdateComponent implements OnInit {
         this.editForm.reset(newUser);
       }
     });
-    this.userService.authorities().subscribe(authorities => (this.authorities = authorities));
+    this.userService.authorities().subscribe(authorities => {
+      debugger;
+      this.authorities = authorities;
+    });
   }
 
   previousState(): void {

@@ -1,6 +1,7 @@
 package com.spynet.logmanager.web.rest;
 
 import com.spynet.logmanager.domain.Manager;
+import com.spynet.logmanager.domain.enumeration.UserType;
 import com.spynet.logmanager.repository.ManagerRepository;
 import com.spynet.logmanager.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -8,6 +9,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -57,6 +59,8 @@ public class ManagerResource {
         if (manager.getId() != null) {
             throw new BadRequestAlertException("A new manager cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        manager.setToken(UUID.randomUUID());
+        manager.setUserType(UserType.NORMAL);
         Manager result = managerRepository.save(manager);
         return ResponseEntity
             .created(new URI("/api/managers/" + result.getId()))

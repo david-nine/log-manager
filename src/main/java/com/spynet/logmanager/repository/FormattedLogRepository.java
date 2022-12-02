@@ -1,6 +1,7 @@
 package com.spynet.logmanager.repository;
 
 import com.spynet.logmanager.domain.FormattedLog;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface FormattedLogRepository extends JpaRepository<FormattedLog, Long> {}
+public interface FormattedLogRepository extends JpaRepository<FormattedLog, Long> {
+    Optional<FormattedLog> findByHostnameOrderByEndHourDesc(String hostname);
+}

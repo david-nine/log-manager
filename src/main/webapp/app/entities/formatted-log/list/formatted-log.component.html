@@ -58,6 +58,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th>
+            <div class="d-flex">
+              <span jhiTranslate="logManagerApp.formattedLog.total">Total</span>
+              <fa-icon class="p-1"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -69,6 +75,7 @@
           <td>{{ formattedLog.startHour | formatMediumDatetime }}</td>
           <td>{{ formattedLog.endHour | formatMediumDatetime }}</td>
           <td>{{ formattedLog.status }}</td>
+          <td>{{ getInterval(formattedLog) }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

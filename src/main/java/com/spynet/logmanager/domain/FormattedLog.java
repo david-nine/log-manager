@@ -4,6 +4,7 @@ import com.spynet.logmanager.domain.enumeration.StatusType;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneOffset;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
@@ -113,6 +114,7 @@ public class FormattedLog implements Serializable {
     }
 
     public void setStartHour(Instant startHour) {
+        this.startDate = LocalDate.ofInstant(startHour, ZoneOffset.ofHours(-3));
         this.startHour = startHour;
     }
 
@@ -121,6 +123,7 @@ public class FormattedLog implements Serializable {
     }
 
     public FormattedLog endHour(Instant endHour) {
+        LocalDate.ofInstant(endHour, ZoneOffset.ofHours(-3));
         this.setEndHour(endHour);
         return this;
     }
